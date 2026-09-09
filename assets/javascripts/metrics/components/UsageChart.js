@@ -47,6 +47,10 @@ export default defineComponent({
         // Remove last element from monthly hits, since this represents the
         // current in-progress month and causes dips in the chart until the
         // month is finished.
+        // Copy the array first: `hits` is a live reference into the shared
+        // store, so popping in place would permanently drop a month from the
+        // underlying data every time this recomputes (e.g. each agency switch).
+        data.hits = data.hits.slice();
         data.hits.pop();
       }
 
