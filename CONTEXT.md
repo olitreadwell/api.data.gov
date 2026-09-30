@@ -1,5 +1,5 @@
 # GSA/api.data.gov context
-> refreshed 2026-09-25 | upstream default: main @ 1908e4e (fork main identical, unchanged)
+> refreshed 2026-09-30 | upstream default: main @ 2d3b468 (fork main identical; moved since 2026-09-25 @1908e4e — merges #705, #712, #706; no layout/partial changes)
 
 ## Identity & policies
 - upstream: GSA/api.data.gov, default branch `main`, primary "language": Hugo (Go) site + Vue 3 metrics app (assets/javascripts/metrics). en-us.
@@ -19,7 +19,7 @@
 - Active: Nick Muerdter (GUI), GSA. Recent human merges are small ref org (18F->GSA) + dependency updates.
 
 ## Issue-area health
-- Open issues are mostly feature/backlog requests. #667 "API usage graphs always drop to zero" (open since 2023, no comments/labels/assignee = not triaged) documents the metrics chart behavior that led to the `data.hits.pop()` "hide current month" workaround in UsageChart.js. #703/#671 bug issues are assigned or in api-umbrella, not this repo.
+- Open issues: 0 (search API `repo:GSA/api.data.gov type:issue state:open` -> total_count 0, 2026-09-30). The former #667 "API usage graphs always drop to zero" (still referenced by PR #3's UsageChart pick) has been closed since the 2026-09-25 refresh. No maintainer-engaged open issue exists.
 - Route: no maintainer-engaged open issue survives -> repo-audit self-found gap.
 
 ## Gap ledger (dedupe — READ FIRST, never re-pick)
