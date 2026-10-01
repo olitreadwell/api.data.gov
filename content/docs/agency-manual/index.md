@@ -192,7 +192,7 @@ The default rate limit for api.data.gov APIs is [1,000 requests per hour](http:/
 
 1. In the top menu, navigate to the "Configuration" menu and choose "API Backends".
 2. Find the API backend you want to adjust the default rate limits for, and click to edit.
-3. Under the "Global Request Settings" section choose "Custom rate limits for the "Rate Limit" field.
+3. Under the "Global Request Settings" section choose "Custom rate limits" for the "Rate Limit" field.
 4. Add your custom rate limits:
    ![User rate limits example](images/user_rate_limits.png)
    - _Note:_ If you're allowing a user a higher hourly rate limit, we typically recommend also keeping a short duration rate limit in place too (for example, a per-second or per-15 second limit). This ensures that a user can't flood your server with all of their hourly requests every hour.
@@ -526,7 +526,7 @@ Using the `query` authentication mechanism should work in the Swagger UI without
 
 - Beginning at least 1-2 months ahead of the planned deprecation date, look up all of the api keys that have used the API over the past 3-6 months and export their emails addresses. Notify them in an email about the upcoming date.
 - In the following days and weeks, monitor who is still using the API right now. Send them a follow up email.
-- When it comes time to deprecate the API, 'tap the brakes' first. Slightly modify the API backend configuration to break your api (e.g. insert a character in the Host settings). Then, a few hours later, undo the change and fix the API. This would be a good opportunity to email whoever is still using your API one last time. Then, a day or two later, break it for longer - perhaps 12-24 hours, then fix it again. Wait another day or three. Then, finally turn if off for good. This gives any developers who didn't see your email for whatever reason to notice their app breaking and reach out to get in touch.
+- When it comes time to deprecate the API, 'tap the brakes' first. Slightly modify the API backend configuration to break your api (e.g. insert a character in the Host settings). Then, a few hours later, undo the change and fix the API. This would be a good opportunity to email whoever is still using your API one last time. Then, a day or two later, break it for longer - perhaps 12-24 hours, then fix it again. Wait another day or three. Then, finally turn it off for good. This gives any developers who didn't see your email for whatever reason to notice their app breaking and reach out to get in touch.
 - It's also a good practice to post a notice on the API docs page or developer hub about the upcoming deprecation.
 
 ## Process for removing an API backend
