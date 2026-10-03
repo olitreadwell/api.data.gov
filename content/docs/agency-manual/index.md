@@ -117,7 +117,7 @@ To set this up:
 
 ### Secret HTTP Header Token
 
-This strategy involves protecting your underlying API backend with a custom token that can be passed via a HTTP header. You can then configure api.data.gov to add the needed HTTP header and token to each request before api.data.gov passes the request to your API backend. In this setup, api.data.gov has knowledge of the needed token to access your API, but public users will never see the token, since its only present on the request from api.data.gov to your API backend.
+This strategy involves protecting your underlying API backend with a custom token that can be passed via a HTTP header. You can then configure api.data.gov to add the needed HTTP header and token to each request before api.data.gov passes the request to your API backend. In this setup, api.data.gov has knowledge of the needed token to access your API, but public users will never see the token, since it's only present on the request from api.data.gov to your API backend.
 
 To set this up:
 
@@ -406,7 +406,7 @@ Creating new API keys is powered by an API. We provide a [default signup form](#
    - Navigate to the Users > API Users and click on the "Add New API User" button.
    - Fill out the form normally, while customizing the following fields:
      - Roles: Add the `api-umbrella-key-creator` role. This is required for this API key to have permissions to create further API keys.
-     - If you're going to use this API key to perform registrations from a client-side JavaScript app, then also be sure to customize the "Rate Limits" and "Restrict Access to HTTP Referers" as described in [Embedding the API key signup form on your own documentation site](#embedding-the-api-key-signup-form-on-your-own-documentation-site) (but this key will only be used in server-side applications, then customizing these may not be necessary).
+     - If you're going to use this API key to perform registrations from a client-side JavaScript app, then also be sure to customize the "Rate Limits" and "Restrict Access to HTTP Referers" as described in [Embedding the API key signup form on your own documentation site](#embedding-the-api-key-signup-form-on-your-own-documentation-site) (but if this key will only be used in server-side applications, then customizing these may not be necessary).
    - Save the new API user, and make note of this API key.
 2. Use this special API key to call the API endpoint to create further API keys. Here's an example using curl:
 
