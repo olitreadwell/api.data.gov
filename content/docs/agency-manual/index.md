@@ -204,7 +204,7 @@ The default rate limit for api.data.gov APIs is [1,000 requests per hour](http:/
 You can manage a specific API user's rate limits if you wish to grant an individual user higher limits than what your API provides by default.
 
 1. In the top menu, navigate to the "Users" menu and choose "API Users".
-2. Find the API user you wish grant higher rate limits to, and click to edit the account.
+2. Find the API user you wish to grant higher rate limits to, and click to edit the account.
 3. Under the "Rate Limiting" section choose "Custom rate limits" for the "Rate Limit" field.
 4. Add your custom rate limits:
    ![User rate limits example](images/user_rate_limits.png)
@@ -531,7 +531,7 @@ Using the `query` authentication mechanism should work in the Swagger UI without
 
 ## Process for removing an API backend
 
-After you have followed the above best practices and are ready to fully deprecate an API, use the following steps to complete the process and reach out to the api.data.gov team if you have any questions. Note that implementing these steps will immediately impact the API's availability, so you'll want to make sure that it takes at the time that you want to end access to the API.
+After you have followed the above best practices and are ready to fully deprecate an API, use the following steps to complete the process and reach out to the api.data.gov team if you have any questions. Note that implementing these steps will immediately impact the API's availability, so you'll want to make sure that it takes place at the time that you want to end access to the API.
 
 1. Login to the api.data.gov admin.
 2. In the top menu, navigate to the "Configuration" menu and pick "API Backends".

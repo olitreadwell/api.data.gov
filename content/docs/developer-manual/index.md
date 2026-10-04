@@ -24,7 +24,7 @@ After signing up, you'll be given your own, unique API key. This 40 character st
 
 ### Ways to Pass Your API Key
 
-Your API key may be passed to the service in a few different ways. Pick which ever method is easiest for you.
+Your API key may be passed to the service in a few different ways. Pick whichever method is easiest for you.
 
 #### HTTP Header
 
