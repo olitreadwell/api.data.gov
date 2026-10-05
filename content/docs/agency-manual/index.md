@@ -435,7 +435,7 @@ Creating new API keys is powered by an API. We provide a [default signup form](#
 
 ## Admin APIs
 
-Everything you can do within the api.data.gov admin interface is powered by an API. If you wish access this admin functionality programmatically (for example, to pull analytics data via an API call), you can do so using the [API Umbrella REST API](https://api-umbrella.readthedocs.io/en/latest/admin/api.html) (note that an API key and the `X-Admin-Auth-Token` header with your own admin credentials must be supplied). The root URL for API requests will be `https://api.data.gov/api-umbrella/v1/*`.
+Everything you can do within the api.data.gov admin interface is powered by an API. If you wish to access this admin functionality programmatically (for example, to pull analytics data via an API call), you can do so using the [API Umbrella REST API](https://api-umbrella.readthedocs.io/en/latest/admin/api.html) (note that an API key and the `X-Admin-Auth-Token` header with your own admin credentials must be supplied). The root URL for API requests will be `https://api.data.gov/api-umbrella/v1/*`.
 
 ## How to post an alert box on api.data.gov and on the individual documentation pages to notify users of upcoming status changes.
 
@@ -524,7 +524,7 @@ Using the `query` authentication mechanism should work in the Swagger UI without
 
 ## Best practices when deprecating an API
 
-- Beginning at least 1-2 months ahead of the planned deprecation date, look up all of the api keys that have used the API over the past 3-6 months and export their emails addresses. Notify them in an email about the upcoming date.
+- Beginning at least 1-2 months ahead of the planned deprecation date, look up all of the api keys that have used the API over the past 3-6 months and export their email addresses. Notify them in an email about the upcoming date.
 - In the following days and weeks, monitor who is still using the API right now. Send them a follow up email.
 - When it comes time to deprecate the API, 'tap the brakes' first. Slightly modify the API backend configuration to break your api (e.g. insert a character in the Host settings). Then, a few hours later, undo the change and fix the API. This would be a good opportunity to email whoever is still using your API one last time. Then, a day or two later, break it for longer - perhaps 12-24 hours, then fix it again. Wait another day or three. Then, finally turn if off for good. This gives any developers who didn't see your email for whatever reason to notice their app breaking and reach out to get in touch.
 - It's also a good practice to post a notice on the API docs page or developer hub about the upcoming deprecation.

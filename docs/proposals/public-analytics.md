@@ -30,5 +30,5 @@ For each of the above, we would want to show last 7 days, last 30 days, last mon
 
 ### Ideas for other things to represent
 
-- GET v. Post
+- GET v. POST
 - Response Time
