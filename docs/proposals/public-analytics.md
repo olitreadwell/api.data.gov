@@ -19,7 +19,7 @@ For each of the above, we would want to show last 7 days, last 30 days, last mon
 
 - Engage with agencies to discuss this effort.
 - Create one or two mockups of the information.
-- Set up feedback sessions to ask outside developers what would be interest.
+- Set up feedback sessions to ask outside developers what would be interesting.
 - Create an MVP.
 
 ### Ideas for presentation layers
@@ -30,5 +30,5 @@ For each of the above, we would want to show last 7 days, last 30 days, last mon
 
 ### Ideas for other things to represent
 
-- GET v. Post
+- GET v. POST
 - Response Time
