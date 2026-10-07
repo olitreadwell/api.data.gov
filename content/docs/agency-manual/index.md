@@ -117,7 +117,7 @@ To set this up:
 
 ### Secret HTTP Header Token
 
-This strategy involves protecting your underlying API backend with a custom token that can be passed via a HTTP header. You can then configure api.data.gov to add the needed HTTP header and token to each request before api.data.gov passes the request to your API backend. In this setup, api.data.gov has knowledge of the needed token to access your API, but public users will never see the token, since its only present on the request from api.data.gov to your API backend.
+This strategy involves protecting your underlying API backend with a custom token that can be passed via a HTTP header. You can then configure api.data.gov to add the needed HTTP header and token to each request before api.data.gov passes the request to your API backend. In this setup, api.data.gov has knowledge of the needed token to access your API, but public users will never see the token, since it's only present on the request from api.data.gov to your API backend.
 
 To set this up:
 
@@ -192,7 +192,7 @@ The default rate limit for api.data.gov APIs is [1,000 requests per hour](http:/
 
 1. In the top menu, navigate to the "Configuration" menu and choose "API Backends".
 2. Find the API backend you want to adjust the default rate limits for, and click to edit.
-3. Under the "Global Request Settings" section choose "Custom rate limits for the "Rate Limit" field.
+3. Under the "Global Request Settings" section choose "Custom rate limits" for the "Rate Limit" field.
 4. Add your custom rate limits:
    ![User rate limits example](images/user_rate_limits.png)
    - _Note:_ If you're allowing a user a higher hourly rate limit, we typically recommend also keeping a short duration rate limit in place too (for example, a per-second or per-15 second limit). This ensures that a user can't flood your server with all of their hourly requests every hour.
@@ -204,7 +204,7 @@ The default rate limit for api.data.gov APIs is [1,000 requests per hour](http:/
 You can manage a specific API user's rate limits if you wish to grant an individual user higher limits than what your API provides by default.
 
 1. In the top menu, navigate to the "Users" menu and choose "API Users".
-2. Find the API user you wish grant higher rate limits to, and click to edit the account.
+2. Find the API user you wish to grant higher rate limits to, and click to edit the account.
 3. Under the "Rate Limiting" section choose "Custom rate limits" for the "Rate Limit" field.
 4. Add your custom rate limits:
    ![User rate limits example](images/user_rate_limits.png)
@@ -406,7 +406,7 @@ Creating new API keys is powered by an API. We provide a [default signup form](#
    - Navigate to the Users > API Users and click on the "Add New API User" button.
    - Fill out the form normally, while customizing the following fields:
      - Roles: Add the `api-umbrella-key-creator` role. This is required for this API key to have permissions to create further API keys.
-     - If you're going to use this API key to perform registrations from a client-side JavaScript app, then also be sure to customize the "Rate Limits" and "Restrict Access to HTTP Referers" as described in [Embedding the API key signup form on your own documentation site](#embedding-the-api-key-signup-form-on-your-own-documentation-site) (but this key will only be used in server-side applications, then customizing these may not be necessary).
+     - If you're going to use this API key to perform registrations from a client-side JavaScript app, then also be sure to customize the "Rate Limits" and "Restrict Access to HTTP Referers" as described in [Embedding the API key signup form on your own documentation site](#embedding-the-api-key-signup-form-on-your-own-documentation-site) (but if this key will only be used in server-side applications, then customizing these may not be necessary).
    - Save the new API user, and make note of this API key.
 2. Use this special API key to call the API endpoint to create further API keys. Here's an example using curl:
 
@@ -435,7 +435,7 @@ Creating new API keys is powered by an API. We provide a [default signup form](#
 
 ## Admin APIs
 
-Everything you can do within the api.data.gov admin interface is powered by an API. If you wish access this admin functionality programmatically (for example, to pull analytics data via an API call), you can do so using the [API Umbrella REST API](https://api-umbrella.readthedocs.io/en/latest/admin/api.html) (note that an API key and the `X-Admin-Auth-Token` header with your own admin credentials must be supplied). The root URL for API requests will be `https://api.data.gov/api-umbrella/v1/*`.
+Everything you can do within the api.data.gov admin interface is powered by an API. If you wish to access this admin functionality programmatically (for example, to pull analytics data via an API call), you can do so using the [API Umbrella REST API](https://api-umbrella.readthedocs.io/en/latest/admin/api.html) (note that an API key and the `X-Admin-Auth-Token` header with your own admin credentials must be supplied). The root URL for API requests will be `https://api.data.gov/api-umbrella/v1/*`.
 
 ## How to post an alert box on api.data.gov and on the individual documentation pages to notify users of upcoming status changes.
 
@@ -473,7 +473,7 @@ Examples of Swagger docs for APIs using api.data.gov:
 - [GovInfo](https://api.govinfo.gov/docs/)
 - [NPS](https://www.nps.gov/subjects/developer/api-documentation.htm)
 - [NREL](https://developer.nrel.gov/docs/cleap/buildings_and_industry/)
-- [Regulations.gov](https://regulationsgov.github.io/developers/console/)
+- [Regulations.gov](https://open.gsa.gov/api/regulationsgov/)
 
 To integrate API key requirements into your OpenAPI/Swagger specifications, you can utilize the authentication configuration:
 
@@ -524,14 +524,14 @@ Using the `query` authentication mechanism should work in the Swagger UI without
 
 ## Best practices when deprecating an API
 
-- Beginning at least 1-2 months ahead of the planned deprecation date, look up all of the api keys that have used the API over the past 3-6 months and export their emails addresses. Notify them in an email about the upcoming date.
+- Beginning at least 1-2 months ahead of the planned deprecation date, look up all of the api keys that have used the API over the past 3-6 months and export their email addresses. Notify them in an email about the upcoming date.
 - In the following days and weeks, monitor who is still using the API right now. Send them a follow up email.
-- When it comes time to deprecate the API, 'tap the brakes' first. Slightly modify the API backend configuration to break your api (e.g. insert a character in the Host settings). Then, a few hours later, undo the change and fix the API. This would be a good opportunity to email whoever is still using your API one last time. Then, a day or two later, break it for longer - perhaps 12-24 hours, then fix it again. Wait another day or three. Then, finally turn if off for good. This gives any developers who didn't see your email for whatever reason to notice their app breaking and reach out to get in touch.
+- When it comes time to deprecate the API, 'tap the brakes' first. Slightly modify the API backend configuration to break your api (e.g. insert a character in the Host settings). Then, a few hours later, undo the change and fix the API. This would be a good opportunity to email whoever is still using your API one last time. Then, a day or two later, break it for longer - perhaps 12-24 hours, then fix it again. Wait another day or three. Then, finally turn it off for good. This gives any developers who didn't see your email for whatever reason to notice their app breaking and reach out to get in touch.
 - It's also a good practice to post a notice on the API docs page or developer hub about the upcoming deprecation.
 
 ## Process for removing an API backend
 
-After you have followed the above best practices and are ready to fully deprecate an API, use the following steps to complete the process and reach out to the api.data.gov team if you have any questions. Note that implementing these steps will immediately impact the API's availability, so you'll want to make sure that it takes at the time that you want to end access to the API.
+After you have followed the above best practices and are ready to fully deprecate an API, use the following steps to complete the process and reach out to the api.data.gov team if you have any questions. Note that implementing these steps will immediately impact the API's availability, so you'll want to make sure that it takes place at the time that you want to end access to the API.
 
 1. Login to the api.data.gov admin.
 2. In the top menu, navigate to the "Configuration" menu and pick "API Backends".
