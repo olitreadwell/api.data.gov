@@ -41,7 +41,7 @@ To access the admin page for agency users, go to [https://api.data.gov/admin](ht
 
 ## Configuring your first API backend
 
-As a quick example, let's step through how you might setup http://api.data.gov/google/whatever to route to http://maps.googleapis.com/whatever as an API backend (but for your own case, you can imagine your agency's API taking the place of this Google example):
+As a quick example, let's step through how you might set up http://api.data.gov/google/whatever to route to http://maps.googleapis.com/whatever as an API backend (but for your own case, you can imagine your agency's API taking the place of this Google example):
 
 1. Login to the api.data.gov admin. (Don't have access? If your agency is interested in using api.data.gov, [contact us](https://api.data.gov/contact/#contact)).
 2. In the top menu, navigate to the "Configuration" menu and pick "API Backends".
@@ -58,9 +58,9 @@ While we can quickly get you up and running on api.data.gov by using api.data.go
 
 There are a few different ways to use your own domain name:
 
-- **CNAME a subdomain (recommended):** If you can dedicate a subdomain to API requests, this is the most straightforward approach. As an example, you might setup `api.agency.gov`. This domain name would be CNAMEd to api.data.gov's servers. We would accept requests for that domain name, and then assuming they pass our validations (api key checks, rate limiting, etc), we would then pass the requests to your underlying API servers (which should be [secured](#securing-your-api-backend) to only accept connections from api.data.gov's servers).
+- **CNAME a subdomain (recommended):** If you can dedicate a subdomain to API requests, this is the most straightforward approach. As an example, you might set up `api.agency.gov`. This domain name would be CNAMEd to api.data.gov's servers. We would accept requests for that domain name, and then assuming they pass our validations (api key checks, rate limiting, etc), we would then pass the requests to your underlying API servers (which should be [secured](#securing-your-api-backend) to only accept connections from api.data.gov's servers).
   - CNAME settings: The CNAME you'll need to use won't actually be to api.data.gov directly. So please [contact us](https://api.data.gov/contact/) and we can quickly work with you to get a CNAME in place for your domain.
-  - HTTPS: We will automatically handle SSL registration and renewal for your API subdomain after the CNAME is setup. No need to purchase or send us SSL certificates.
+  - HTTPS: We will automatically handle SSL registration and renewal for your API subdomain after the CNAME is set up. No need to purchase or send us SSL certificates.
   - Non-API website content (for example, a home page, documentation, or a developer hub) can also be proxied to a separate destination (for example, GitHub Pages). See [hosting website content on your CNAMEd subdomain](#hosting-website-content-on-your-cnamed-subdomain) below.
 - **Reverse proxying API requests on your end:** This approach is more complicated and is only recommended if your APIs are currently on a more general domain name (eg, `agency.gov/apis/*`) and you would like to use api.data.gov's services without changing your public URL endpoints. In this case, you would need to have the ability to reverse proxy certain URL paths on your agency server's end to our servers. As an example, if a user hit `agency.gov/apis/something` that would need to be reverse proxied to api.data.gov's servers. From there, we would perform our validations and assuming they pass, then send the request to your underlying API servers. This approach leads to an additional hop in network traffic (since it goes from your servers to our servers and then back to your servers), so it's not ideal (but in practice may be fine depending on where your servers are located and performance requirements).
 
@@ -79,7 +79,7 @@ If you're migrating an existing domain to use our automatic SSL, there's a coupl
 
 If you're using api.data.gov's services on your own agency's subdomain (for example, api.agency.gov) via the CNAME approach, we can also route to a different destination for general website content. This type of website content might include a home page, documentation pages, or a developer hub.
 
-To configure this, you can use the "Website Backend" section in the api.data.gov admin. Website Backends define where we will route any request that does not match one of your API Backend URLs for your domain. Website backend routing is not subject to our normal API key or rate limiting restrictions which is what makes it more suitable for routing to your website. To setup a website backend:
+To configure this, you can use the "Website Backend" section in the api.data.gov admin. Website Backends define where we will route any request that does not match one of your API Backend URLs for your domain. Website backend routing is not subject to our normal API key or rate limiting restrictions which is what makes it more suitable for routing to your website. To set up a website backend:
 
 1. In the top menu, navigate to the "Configuration" menu and pick "Website Backends".
 2. Click the "Add Website Backend" button.
@@ -108,7 +108,7 @@ This strategy involves protecting your underlying API backend with HTTP Basic Au
 
 To set this up:
 
-1. **Add HTTP Basic Authentication requirements to your API backend:** Setup your API backend to require HTTP Basic Auth for accessing it directly. This can be done in your web server (e.g., [Apache](http://httpd.apache.org/docs/current/howto/auth.html#gettingitworking), [nginx](https://www.nginx.com/resources/admin-guide/restricting-access-auth-basic/)) or in your web application (e.g., [Ruby on Rails](http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html)).
+1. **Add HTTP Basic Authentication requirements to your API backend:** Set up your API backend to require HTTP Basic Auth for accessing it directly. This can be done in your web server (e.g., [Apache](http://httpd.apache.org/docs/current/howto/auth.html#gettingitworking), [nginx](https://www.nginx.com/resources/admin-guide/restricting-access-auth-basic/)) or in your web application (e.g., [Ruby on Rails](http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html)).
 1. **Configure api.data.gov to add HTTP basic authentication requests:**
    - Login to the [api.data.gov admin](https://api.data.gov/admin/#/apis).
    - Navigate to Configuration > API Backends and edit your API backend.
@@ -121,7 +121,7 @@ This strategy involves protecting your underlying API backend with a custom toke
 
 To set this up:
 
-1. **Add secret token requirements to your API backend:** Setup your API backend to require a secret token to be passed via a custom HTTP header for accessing it directly. This is probably easiest to implement in your web application. For example, you might check that the `X-Secret-Token` HTTP header has a value of `foobar` in order to directly access your API.
+1. **Add secret token requirements to your API backend:** Set up your API backend to require a secret token to be passed via a custom HTTP header for accessing it directly. This is probably easiest to implement in your web application. For example, you might check that the `X-Secret-Token` HTTP header has a value of `foobar` in order to directly access your API.
 1. **Configure api.data.gov to add HTTP basic authentication requests:**
    - Login to the [api.data.gov admin](https://api.data.gov/admin/#/apis).
    - Navigate to Configuration > API Backends and edit your API backend.
@@ -237,7 +237,7 @@ For applications that wish to embed the API key client-side (for example, compil
 
 You may want to assign different rate limits, permission requirements, or other settings for only a specific part of your API. This could include treating `POST` requests differently from `GET` requests, or treating requests to `/foo` differently than requests to `/bar`.
 
-Inside the API Backend configuration, this is under the "Sub-URL Request Settings" section. This allows you to override your default backend configuration settings for certain types of URLs. So you might define different API key requirements for POST requests, different rate limits for all your apis under a certain path (eg, `/whatever/*` get rate limited differently), and so on. Here's an example of how you might setup a role requirement for any POST requests under `/whatever*`:
+Inside the API Backend configuration, this is under the "Sub-URL Request Settings" section. This allows you to override your default backend configuration settings for certain types of URLs. So you might define different API key requirements for POST requests, different rate limits for all your apis under a certain path (eg, `/whatever/*` get rate limited differently), and so on. Here's an example of how you might set up a role requirement for any POST requests under `/whatever*`:
 
 ![Sub-URL Request Settings form](images/sub_url_request_settings.png)
 
@@ -374,7 +374,7 @@ You can embed the API key signup form for api.data.gov on your own developer hub
      Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://api.data.gov https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' https://api.data.gov; img-src 'self' data:; connect-src 'self' https://api.data.gov; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/;
      ```
 
-4. Navigate to the webpage where you placed the snippet. You should see a signup form and be able to signup for an API key completely on your own site. Run into any issues? [File an issue](https://github.com/GSA/api.data.gov/issues).
+4. Navigate to the webpage where you placed the snippet. You should see a signup form and be able to sign up for an API key completely on your own site. Run into any issues? [File an issue](https://github.com/GSA/api.data.gov/issues).
 
 ## Linking to your own contact/support address
 
