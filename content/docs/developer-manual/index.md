@@ -120,7 +120,7 @@ Certain, general errors will be returned in a standardized way from all API Umbr
       <th class="doc-parameter-name" scope="row">API_KEY_INVALID</th>
       <td class="doc-parameter-name">403</td>
       <td class="doc-parameter-description">
-        An invalid API key was supplied. Double check that the API key being passed in is valid, or signup for an API key.
+        An invalid API key was supplied. Double check that the API key being passed in is valid, or sign up for an API key.
       </td>
     </tr>
     <tr>
