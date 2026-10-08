@@ -31,7 +31,7 @@ Government Services provides:
   - The Energy Information Administration’s Data APIs
 - At the Department of Health and Human Services:
   - the Food and Drug Administration’s COVID-19 Serological Testing, Medical Device Recall, Drug Adverse Effects, and Food Recall APIs along with 21 other medical services
-  - the National Institutes’ of Health Dietary Supplement Label API
+  - the National Institutes of Health Dietary Supplement Label API
 - At the Department of the Interior:
   - the National Park Service’s Campground, Visitor Center, Emergency Alert, and Webcam APIs along with 25 other Park APIs.
   - the Federal Geographic Data Committee’s 80 geospatial data-sharing web services
