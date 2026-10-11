@@ -41,7 +41,7 @@ To access the admin page for agency users, go to [https://api.data.gov/admin](ht
 
 ## Configuring your first API backend
 
-As a quick example, let's step through how you might setup http://api.data.gov/google/whatever to route to http://maps.googleapis.com/whatever as an API backend (but for your own case, you can imagine your agency's API taking the place of this Google example):
+As a quick example, let's step through how you might set up http://api.data.gov/google/whatever to route to http://maps.googleapis.com/whatever as an API backend (but for your own case, you can imagine your agency's API taking the place of this Google example):
 
 1. Login to the api.data.gov admin. (Don't have access? If your agency is interested in using api.data.gov, [contact us](https://api.data.gov/contact/#contact)).
 2. In the top menu, navigate to the "Configuration" menu and pick "API Backends".
@@ -58,9 +58,9 @@ While we can quickly get you up and running on api.data.gov by using api.data.go
 
 There are a few different ways to use your own domain name:
 
-- **CNAME a subdomain (recommended):** If you can dedicate a subdomain to API requests, this is the most straightforward approach. As an example, you might setup `api.agency.gov`. This domain name would be CNAMEd to api.data.gov's servers. We would accept requests for that domain name, and then assuming they pass our validations (api key checks, rate limiting, etc), we would then pass the requests to your underlying API servers (which should be [secured](#securing-your-api-backend) to only accept connections from api.data.gov's servers).
+- **CNAME a subdomain (recommended):** If you can dedicate a subdomain to API requests, this is the most straightforward approach. As an example, you might set up `api.agency.gov`. This domain name would be CNAMEd to api.data.gov's servers. We would accept requests for that domain name, and then assuming they pass our validations (api key checks, rate limiting, etc), we would then pass the requests to your underlying API servers (which should be [secured](#securing-your-api-backend) to only accept connections from api.data.gov's servers).
   - CNAME settings: The CNAME you'll need to use won't actually be to api.data.gov directly. So please [contact us](https://api.data.gov/contact/) and we can quickly work with you to get a CNAME in place for your domain.
-  - HTTPS: We will automatically handle SSL registration and renewal for your API subdomain after the CNAME is setup. No need to purchase or send us SSL certificates.
+  - HTTPS: We will automatically handle SSL registration and renewal for your API subdomain after the CNAME is set up. No need to purchase or send us SSL certificates.
   - Non-API website content (for example, a home page, documentation, or a developer hub) can also be proxied to a separate destination (for example, GitHub Pages). See [hosting website content on your CNAMEd subdomain](#hosting-website-content-on-your-cnamed-subdomain) below.
 - **Reverse proxying API requests on your end:** This approach is more complicated and is only recommended if your APIs are currently on a more general domain name (eg, `agency.gov/apis/*`) and you would like to use api.data.gov's services without changing your public URL endpoints. In this case, you would need to have the ability to reverse proxy certain URL paths on your agency server's end to our servers. As an example, if a user hit `agency.gov/apis/something` that would need to be reverse proxied to api.data.gov's servers. From there, we would perform our validations and assuming they pass, then send the request to your underlying API servers. This approach leads to an additional hop in network traffic (since it goes from your servers to our servers and then back to your servers), so it's not ideal (but in practice may be fine depending on where your servers are located and performance requirements).
 
@@ -79,7 +79,7 @@ If you're migrating an existing domain to use our automatic SSL, there's a coupl
 
 If you're using api.data.gov's services on your own agency's subdomain (for example, api.agency.gov) via the CNAME approach, we can also route to a different destination for general website content. This type of website content might include a home page, documentation pages, or a developer hub.
 
-To configure this, you can use the "Website Backend" section in the api.data.gov admin. Website Backends define where we will route any request that does not match one of your API Backend URLs for your domain. Website backend routing is not subject to our normal API key or rate limiting restrictions which is what makes it more suitable for routing to your website. To setup a website backend:
+To configure this, you can use the "Website Backend" section in the api.data.gov admin. Website Backends define where we will route any request that does not match one of your API Backend URLs for your domain. Website backend routing is not subject to our normal API key or rate limiting restrictions which is what makes it more suitable for routing to your website. To set up a website backend:
 
 1. In the top menu, navigate to the "Configuration" menu and pick "Website Backends".
 2. Click the "Add Website Backend" button.
@@ -108,7 +108,7 @@ This strategy involves protecting your underlying API backend with HTTP Basic Au
 
 To set this up:
 
-1. **Add HTTP Basic Authentication requirements to your API backend:** Setup your API backend to require HTTP Basic Auth for accessing it directly. This can be done in your web server (e.g., [Apache](http://httpd.apache.org/docs/current/howto/auth.html#gettingitworking), [nginx](https://www.nginx.com/resources/admin-guide/restricting-access-auth-basic/)) or in your web application (e.g., [Ruby on Rails](http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html)).
+1. **Add HTTP Basic Authentication requirements to your API backend:** Set up your API backend to require HTTP Basic Auth for accessing it directly. This can be done in your web server (e.g., [Apache](http://httpd.apache.org/docs/current/howto/auth.html#gettingitworking), [nginx](https://www.nginx.com/resources/admin-guide/restricting-access-auth-basic/)) or in your web application (e.g., [Ruby on Rails](http://api.rubyonrails.org/classes/ActionController/HttpAuthentication/Basic.html)).
 1. **Configure api.data.gov to add HTTP basic authentication requests:**
    - Login to the [api.data.gov admin](https://api.data.gov/admin/#/apis).
    - Navigate to Configuration > API Backends and edit your API backend.
@@ -117,11 +117,11 @@ To set this up:
 
 ### Secret HTTP Header Token
 
-This strategy involves protecting your underlying API backend with a custom token that can be passed via a HTTP header. You can then configure api.data.gov to add the needed HTTP header and token to each request before api.data.gov passes the request to your API backend. In this setup, api.data.gov has knowledge of the needed token to access your API, but public users will never see the token, since its only present on the request from api.data.gov to your API backend.
+This strategy involves protecting your underlying API backend with a custom token that can be passed via a HTTP header. You can then configure api.data.gov to add the needed HTTP header and token to each request before api.data.gov passes the request to your API backend. In this setup, api.data.gov has knowledge of the needed token to access your API, but public users will never see the token, since it's only present on the request from api.data.gov to your API backend.
 
 To set this up:
 
-1. **Add secret token requirements to your API backend:** Setup your API backend to require a secret token to be passed via a custom HTTP header for accessing it directly. This is probably easiest to implement in your web application. For example, you might check that the `X-Secret-Token` HTTP header has a value of `foobar` in order to directly access your API.
+1. **Add secret token requirements to your API backend:** Set up your API backend to require a secret token to be passed via a custom HTTP header for accessing it directly. This is probably easiest to implement in your web application. For example, you might check that the `X-Secret-Token` HTTP header has a value of `foobar` in order to directly access your API.
 1. **Configure api.data.gov to add HTTP basic authentication requests:**
    - Login to the [api.data.gov admin](https://api.data.gov/admin/#/apis).
    - Navigate to Configuration > API Backends and edit your API backend.
@@ -192,7 +192,7 @@ The default rate limit for api.data.gov APIs is [1,000 requests per hour](http:/
 
 1. In the top menu, navigate to the "Configuration" menu and choose "API Backends".
 2. Find the API backend you want to adjust the default rate limits for, and click to edit.
-3. Under the "Global Request Settings" section choose "Custom rate limits for the "Rate Limit" field.
+3. Under the "Global Request Settings" section choose "Custom rate limits" for the "Rate Limit" field.
 4. Add your custom rate limits:
    ![User rate limits example](images/user_rate_limits.png)
    - _Note:_ If you're allowing a user a higher hourly rate limit, we typically recommend also keeping a short duration rate limit in place too (for example, a per-second or per-15 second limit). This ensures that a user can't flood your server with all of their hourly requests every hour.
@@ -204,7 +204,7 @@ The default rate limit for api.data.gov APIs is [1,000 requests per hour](http:/
 You can manage a specific API user's rate limits if you wish to grant an individual user higher limits than what your API provides by default.
 
 1. In the top menu, navigate to the "Users" menu and choose "API Users".
-2. Find the API user you wish grant higher rate limits to, and click to edit the account.
+2. Find the API user you wish to grant higher rate limits to, and click to edit the account.
 3. Under the "Rate Limiting" section choose "Custom rate limits" for the "Rate Limit" field.
 4. Add your custom rate limits:
    ![User rate limits example](images/user_rate_limits.png)
@@ -237,7 +237,7 @@ For applications that wish to embed the API key client-side (for example, compil
 
 You may want to assign different rate limits, permission requirements, or other settings for only a specific part of your API. This could include treating `POST` requests differently from `GET` requests, or treating requests to `/foo` differently than requests to `/bar`.
 
-Inside the API Backend configuration, this is under the "Sub-URL Request Settings" section. This allows you to override your default backend configuration settings for certain types of URLs. So you might define different API key requirements for POST requests, different rate limits for all your apis under a certain path (eg, `/whatever/*` get rate limited differently), and so on. Here's an example of how you might setup a role requirement for any POST requests under `/whatever*`:
+Inside the API Backend configuration, this is under the "Sub-URL Request Settings" section. This allows you to override your default backend configuration settings for certain types of URLs. So you might define different API key requirements for POST requests, different rate limits for all your apis under a certain path (eg, `/whatever/*` get rate limited differently), and so on. Here's an example of how you might set up a role requirement for any POST requests under `/whatever*`:
 
 ![Sub-URL Request Settings form](images/sub_url_request_settings.png)
 
@@ -374,7 +374,7 @@ You can embed the API key signup form for api.data.gov on your own developer hub
      Content-Security-Policy: default-src 'self'; script-src 'self' 'unsafe-inline' https://api.data.gov https://www.google.com/recaptcha/ https://www.gstatic.com/recaptcha/; style-src 'self' https://api.data.gov; img-src 'self' data:; connect-src 'self' https://api.data.gov; frame-src https://www.google.com/recaptcha/ https://recaptcha.google.com/recaptcha/;
      ```
 
-4. Navigate to the webpage where you placed the snippet. You should see a signup form and be able to signup for an API key completely on your own site. Run into any issues? [File an issue](https://github.com/GSA/api.data.gov/issues).
+4. Navigate to the webpage where you placed the snippet. You should see a signup form and be able to sign up for an API key completely on your own site. Run into any issues? [File an issue](https://github.com/GSA/api.data.gov/issues).
 
 ## Linking to your own contact/support address
 
@@ -406,7 +406,7 @@ Creating new API keys is powered by an API. We provide a [default signup form](#
    - Navigate to the Users > API Users and click on the "Add New API User" button.
    - Fill out the form normally, while customizing the following fields:
      - Roles: Add the `api-umbrella-key-creator` role. This is required for this API key to have permissions to create further API keys.
-     - If you're going to use this API key to perform registrations from a client-side JavaScript app, then also be sure to customize the "Rate Limits" and "Restrict Access to HTTP Referers" as described in [Embedding the API key signup form on your own documentation site](#embedding-the-api-key-signup-form-on-your-own-documentation-site) (but this key will only be used in server-side applications, then customizing these may not be necessary).
+     - If you're going to use this API key to perform registrations from a client-side JavaScript app, then also be sure to customize the "Rate Limits" and "Restrict Access to HTTP Referers" as described in [Embedding the API key signup form on your own documentation site](#embedding-the-api-key-signup-form-on-your-own-documentation-site) (but if this key will only be used in server-side applications, then customizing these may not be necessary).
    - Save the new API user, and make note of this API key.
 2. Use this special API key to call the API endpoint to create further API keys. Here's an example using curl:
 
@@ -435,7 +435,7 @@ Creating new API keys is powered by an API. We provide a [default signup form](#
 
 ## Admin APIs
 
-Everything you can do within the api.data.gov admin interface is powered by an API. If you wish access this admin functionality programmatically (for example, to pull analytics data via an API call), you can do so using the [API Umbrella REST API](https://api-umbrella.readthedocs.io/en/latest/admin/api.html) (note that an API key and the `X-Admin-Auth-Token` header with your own admin credentials must be supplied). The root URL for API requests will be `https://api.data.gov/api-umbrella/v1/*`.
+Everything you can do within the api.data.gov admin interface is powered by an API. If you wish to access this admin functionality programmatically (for example, to pull analytics data via an API call), you can do so using the [API Umbrella REST API](https://api-umbrella.readthedocs.io/en/latest/admin/api.html) (note that an API key and the `X-Admin-Auth-Token` header with your own admin credentials must be supplied). The root URL for API requests will be `https://api.data.gov/api-umbrella/v1/*`.
 
 ## How to post an alert box on api.data.gov and on the individual documentation pages to notify users of upcoming status changes.
 
@@ -473,7 +473,7 @@ Examples of Swagger docs for APIs using api.data.gov:
 - [GovInfo](https://api.govinfo.gov/docs/)
 - [NPS](https://www.nps.gov/subjects/developer/api-documentation.htm)
 - [NREL](https://developer.nrel.gov/docs/cleap/buildings_and_industry/)
-- [Regulations.gov](https://regulationsgov.github.io/developers/console/)
+- [Regulations.gov](https://open.gsa.gov/api/regulationsgov/)
 
 To integrate API key requirements into your OpenAPI/Swagger specifications, you can utilize the authentication configuration:
 
@@ -524,14 +524,14 @@ Using the `query` authentication mechanism should work in the Swagger UI without
 
 ## Best practices when deprecating an API
 
-- Beginning at least 1-2 months ahead of the planned deprecation date, look up all of the api keys that have used the API over the past 3-6 months and export their emails addresses. Notify them in an email about the upcoming date.
+- Beginning at least 1-2 months ahead of the planned deprecation date, look up all of the api keys that have used the API over the past 3-6 months and export their email addresses. Notify them in an email about the upcoming date.
 - In the following days and weeks, monitor who is still using the API right now. Send them a follow up email.
-- When it comes time to deprecate the API, 'tap the brakes' first. Slightly modify the API backend configuration to break your api (e.g. insert a character in the Host settings). Then, a few hours later, undo the change and fix the API. This would be a good opportunity to email whoever is still using your API one last time. Then, a day or two later, break it for longer - perhaps 12-24 hours, then fix it again. Wait another day or three. Then, finally turn if off for good. This gives any developers who didn't see your email for whatever reason to notice their app breaking and reach out to get in touch.
+- When it comes time to deprecate the API, 'tap the brakes' first. Slightly modify the API backend configuration to break your api (e.g. insert a character in the Host settings). Then, a few hours later, undo the change and fix the API. This would be a good opportunity to email whoever is still using your API one last time. Then, a day or two later, break it for longer - perhaps 12-24 hours, then fix it again. Wait another day or three. Then, finally turn it off for good. This gives any developers who didn't see your email for whatever reason to notice their app breaking and reach out to get in touch.
 - It's also a good practice to post a notice on the API docs page or developer hub about the upcoming deprecation.
 
 ## Process for removing an API backend
 
-After you have followed the above best practices and are ready to fully deprecate an API, use the following steps to complete the process and reach out to the api.data.gov team if you have any questions. Note that implementing these steps will immediately impact the API's availability, so you'll want to make sure that it takes at the time that you want to end access to the API.
+After you have followed the above best practices and are ready to fully deprecate an API, use the following steps to complete the process and reach out to the api.data.gov team if you have any questions. Note that implementing these steps will immediately impact the API's availability, so you'll want to make sure that it takes place at the time that you want to end access to the API.
 
 1. Login to the api.data.gov admin.
 2. In the top menu, navigate to the "Configuration" menu and pick "API Backends".

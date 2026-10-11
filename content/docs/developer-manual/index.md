@@ -24,7 +24,7 @@ After signing up, you'll be given your own, unique API key. This 40 character st
 
 ### Ways to Pass Your API Key
 
-Your API key may be passed to the service in a few different ways. Pick which ever method is easiest for you.
+Your API key may be passed to the service in a few different ways. Pick whichever method is easiest for you.
 
 #### HTTP Header
 
@@ -73,7 +73,7 @@ In documentation examples, the special `DEMO_KEY` api key is used. This API key 
 
 ### How Do I See My Current Usage?
 
-Your can check your current rate limit and usage details by inspecting the `X-RateLimit-Limit` and `X-RateLimit-Remaining` HTTP headers that are returned on every API response. For example, if an API has the default hourly limit of 1,000 request, after making 2 requests, you will receive these HTTP headers in the response of the second request:
+You can check your current rate limit and usage details by inspecting the `X-RateLimit-Limit` and `X-RateLimit-Remaining` HTTP headers that are returned on every API response. For example, if an API has the default hourly limit of 1,000 requests, after making 2 requests, you will receive these HTTP headers in the response of the second request:
 
 ```
 X-RateLimit-Limit: 1000
@@ -120,7 +120,7 @@ Certain, general errors will be returned in a standardized way from all API Umbr
       <th class="doc-parameter-name" scope="row">API_KEY_INVALID</th>
       <td class="doc-parameter-name">403</td>
       <td class="doc-parameter-description">
-        An invalid API key was supplied. Double check that the API key being passed in is valid, or signup for an API key.
+        An invalid API key was supplied. Double check that the API key being passed in is valid, or sign up for an API key.
       </td>
     </tr>
     <tr>

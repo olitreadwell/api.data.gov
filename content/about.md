@@ -28,7 +28,7 @@ api.data.gov acts as a layer above your existing APIs. It transparently adds ext
 
 We'll handle API keys for you:
 
-- **API key signup:** It's quick and easy for users to signup for an API key and start using it immediately.
+- **API key signup:** It's quick and easy for users to sign up for an API key and start using it immediately.
 - **Shared across services:** Users can reuse their API key across all participating api.data.gov APIs.
 - **No coding required:** No code changes are required to your API. If your API is being hit through api.data.gov, you can simply assume it's from a valid user.
 
@@ -59,12 +59,12 @@ You might not want to allow all users to have uncontrolled access to your APIs:
 
 ### Open Source
 
-api.data.gov is powered by the open source project [API Umbrella](https://github.com/NREL/api-umbrella/). You can contribute to the development of this platform, or setup your own instance and run all this same stack yourself.
+api.data.gov is powered by the open source project [API Umbrella](https://github.com/NREL/api-umbrella/). You can contribute to the development of this platform, or set up your own instance and run all this same stack yourself.
 
 ## How To Participate
 
-If you're interested in exploring any of this for your APIs, please [contact us](/contact/#apidatagov-service-contact). In general, it's easy to take any existing API your agency has (or is in the process of building) and put api.data.gov in front of it. This can be an easy way to get started and see what type of functionality api.data.gov might provide for your API.
+If you're interested in exploring any of this for your APIs, please [contact us](/contact/#contact). In general, it's easy to take any existing API your agency has (or is in the process of building) and put api.data.gov in front of it. This can be an easy way to get started and see what type of functionality api.data.gov might provide for your API.
 
 ### Administration Guide
 
-Are you an agency that's already signed up with api.data.gov but looking for additional help? Some answers to common administration questions are documented in the [manual](/docs/agency-manual/), or you can always [contact us](/contact/#apidatagov-service-contact) with additional questions or feedback.
+Are you an agency that's already signed up with api.data.gov but looking for additional help? Some answers to common administration questions are documented in the [manual](/docs/agency-manual/), or you can always [contact us](/contact/#contact) with additional questions or feedback.
