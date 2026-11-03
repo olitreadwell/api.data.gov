@@ -46,7 +46,11 @@ export default defineComponent({
       <h1>api.data.gov Metrics</h1>
 
       <div class="container form-group custom-select-lg-container">
-        <select v-model="selectedOrganization" class="custom-select custom-select-lg">
+        <select
+          v-model="selectedOrganization"
+          class="custom-select custom-select-lg"
+          aria-label="Select agency"
+        >
           <option value="all">All Agencies</option>
           <option v-for="name in organizationNames" v-bind:value="name">{{ name }}</option>
         </select>
