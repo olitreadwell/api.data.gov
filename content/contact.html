@@ -177,28 +177,27 @@ csp:
     aria-describedby="alert_modal_message"
     aria-hidden="true"
   >
-    <div class="modal-backdrop show" data-a11y-dialog-hide>
-      <div role="document" class="modal show d-block">
-        <div class="modal-dialog">
-          <div class="modal-content" autofocus>
-            <div class="modal-body">
-              <div class="usa-prose" id="alert_modal_message"></div>
-              <div class="usa-modal__footer">
-                <button type="button" class="usa-button" data-a11y-dialog-hide>
-                  OK
-                </button>
-              </div>
+    <div class="modal-backdrop show" data-a11y-dialog-hide></div>
+    <div role="document" class="modal show d-block">
+      <div class="modal-dialog">
+        <div class="modal-content" autofocus>
+          <div class="modal-body">
+            <div class="usa-prose" id="alert_modal_message"></div>
+            <div class="usa-modal__footer">
+              <button type="button" class="usa-button" data-a11y-dialog-hide>
+                OK
+              </button>
             </div>
           </div>
-          <button
-            type="button"
-            class="usa-button usa-modal__close"
-            aria-label="Close"
-            data-a11y-dialog-hide
-          >
-            {{< usa-icon "close" >}}
-          </button>
         </div>
+        <button
+          type="button"
+          class="usa-button usa-modal__close"
+          aria-label="Close"
+          data-a11y-dialog-hide
+        >
+          {{< usa-icon "close" >}}
+        </button>
       </div>
     </div>
   </div>
