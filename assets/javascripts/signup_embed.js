@@ -532,7 +532,7 @@ formEl.addEventListener("submit", (event) => {
       if (recaptchaV2Enabled) {
         // Re-enable the submit button after a period of time in case the user
         // is prompted with the captcha solve screen and chooses to close it.
-        // This is a bit of a workaround but since recpatcha doesn't support a
+        // This is a bit of a workaround but since recaptcha doesn't support a
         // close event, this will at least ensure the button gets re-enabled
         // without messing with more complicated DOM monitoring solutions.
         //
