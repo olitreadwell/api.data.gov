@@ -48,7 +48,7 @@ export default defineComponent({
       };
 
       dataTable = new DataTable(tableEl.value, {
-        data: this.organizations,
+        data: organizations.value,
         autoWidth: false,
         columns: [
           {
